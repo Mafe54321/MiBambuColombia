@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiBambu Colombia - Plan Estratégico 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #00052E;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #27FB6B 0%, #17CA60 100%);
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(39, 251, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 5, 46, 0.1);
+            border-radius: 50%;
+        }
+        
+        .logo-header {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: #00052E;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tagline {
+            font-size: 2em;
+            font-weight: 700;
+            color: #00052E;
+            margin: 20px 0;
+        }
+        
+        .budget-total {
+            font-size: 3em;
+            font-weight: 800;
+            color: #00052E;
+            margin-top: 20px;
+        }
+        
+        .period {
+            font-size: 1.3em;
+            color: #002041;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        
+        /* NAVIGATION TABS */
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            background: rgba(39, 251, 107, 0.1);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .tab:hover {
+            background: #27FB6B;
+            color: #00052E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(39, 251, 107, 0.3);
+        }
+        
+        .tab.active {
+            background: #27FB6B;
+            color: #00052E;
+            border-color: #27FB6B;
+        }
+        
+        /* SECTIONS */
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(39, 251, 107, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            border-color: #27FB6B;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            color: #27FB6B;
+            margin-bottom: 30px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* GRID LAYOUTS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(39, 251, 107, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            background: rgba(39, 251, 107, 0.15);
+            border-color: #27FB6B;
+            transform: scale(1.03);
+        }
+        
+        .card-title {
+            font-size: 1.3em;
+            color: #27FB6B;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .stat {
+            font-size: 3em;
+            font-weight: 800;
+            color: #27FB6B;
+            margin: 15px 0;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #27FB6B 0%, #17CA60 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -57px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            background: #27FB6B;
+            border-radius: 50%;
+            border: 4px solid #00052E;
+            box-shadow: 0 0 20px rgba(39, 251, 107, 0.5);
+        }
+        
+        .timeline-month {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #27FB6B;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-budget {
+            font-size: 2em;
+            font-weight: 700;
+            color: white;
+            margin: 10px 0;
+        }
+        
+        .timeline-meta {
+            font-size: 1.1em;
+            color: #aaa;
+            margin: 8px 0;
+        }
+        
+        .timeline-details {
+            margin-top: 15px;
+            padding: 20px;
+            background: rgba(39, 251, 107, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #27FB6B;
+        }
+        
+        /* PROMO CARDS */
+        .promo-card {
+            background: linear-gradient(135deg, rgba(39, 251, 107, 0.2) 0%, rgba(23, 202, 96, 0.1) 100%);
+            border: 2px solid #27FB6B;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .promo-title {
+            font-size: 1.8em;
+            color: #27FB6B;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .promo-amount {
+            font-size: 3.5em;
+            color: white;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+        
+        /* CHANNEL BREAKDOWN */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .channel-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .channel-card:hover {
+            border-color: #27FB6B;
+            background: rgba(39, 251, 107, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .channel-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .channel-percent {
+            font-size: 3em;
+            color: #27FB6B;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+        
+        .channel-amount {
+            font-size: 1.3em;
+            color: #aaa;
+            font-weight: 600;
+        }
+        
+        /* PROGRESS BARS */
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #27FB6B 0%, #17CA60 100%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+            font-weight: 700;
+            color: #00052E;
+            font-size: 1.1em;
+            transition: width 1.5s ease;
+            box-shadow: 0 0 20px rgba(39, 251, 107, 0.5);
+        }
+        
+        /* LIST STYLES */
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05em;
+        }
+        
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27FB6B;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #27FB6B 0%, #17CA60 100%);
+            color: #00052E;
+            padding: 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(39, 251, 107, 0.3);
+        }
+        
+        .highlight-box strong {
+            font-weight: 800;
+            font-size: 1.2em;
+        }
+        
+        /* KPI BOXES */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .kpi-box {
+            background: linear-gradient(135deg, rgba(39, 251, 107, 0.15) 0%, rgba(23, 202, 96, 0.05) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #27FB6B;
+        }
+        
+        .kpi-label {
+            font-size: 0.85em;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .kpi-value {
+            font-size: 2.8em;
+            font-weight: 800;
+            color: #27FB6B;
+            line-height: 1;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo-header {
+                font-size: 2em;
+            }
+            .tagline {
+                font-size: 1.3em;
+            }
+            .budget-total {
+                font-size: 2em;
+            }
+            .section-title {
+                font-size: 1.8em;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab {
+                width: 100%;
+            }
+        }
+        
+        /* SPECIAL EMPHASIS */
+        .emphasis-green {
+            color: #27FB6B;
+            font-weight: 700;
+        }
+        
+        .emphasis-box {
+            background: rgba(39, 251, 107, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #27FB6B;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo-header">🎋 MiBambu Colombia</div>
+            <div class="tagline">Tu dinero YA, sin cuentos</div>
+            <div class="budget-total">Budget: $700,000 USD</div>
+            <div class="period">Noviembre 2025 - Diciembre 2026 | 14 meses</div>
+        </div>
+
+        <!-- NAVIGATION TABS -->
+        <div class="tabs">
+            <div class="tab active" onclick="showSection('resumen')">📊 Resumen</div>
+            <div class="tab" onclick="showSection('ff')">👥 F&F Beta</div>
+            <div class="tab" onclick="showSection('q1')">🚀 Q1 2026</div>
+            <div class="tab" onclick="showSection('q2')">📈 Q2 2026</div>
+            <div class="tab" onclick="showSection('q3')">💡 Q3 2026</div>
+            <div class="tab" onclick="showSection('q4')">🎄 Q4 2026</div>
+            <div class="tab" onclick="showSection('canales')">📱 Canales</div>
+            <div class="tab" onclick="showSection('resultados')">🎯 Resultados</div>
+        </div>
+
+        <!-- RESUMEN EJECUTIVO -->
+        <div id="resumen" class="section active">
+            <h2 class="section-title">📊 Resumen Ejecutivo</h2>
+            
+            <div class="kpi-grid">
+                <div class="kpi-box">
+                    <div class="kpi-label">Total Cuentas Proyectadas</div>
+                    <div class="kpi-value">33,700</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-label">CPA Promedio</div>
+                    <div class="kpi-value">$20.77</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-label">Activation Rate</div>
+                    <div class="kpi-value">43.5%</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-label">Market Share Año 1</div>
+                    <div class="kpi-value">1.82%</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Estrategia Clave:</strong> Lanzamiento en 2 fases - Friends & Family Beta (Nov-Dic 2025) seguido de Public Launch masivo (Enero 2026) aprovechando momento post-festividades cuando las personas necesitan más el incentivo de $60,000 COP.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">🎯 Meta Principal</div>
+                    <div class="stat">10,000</div>
+                    <p>cuentas mensuales desde mes 7-9</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">💰 Budget Total</div>
+                    <div class="stat">$700K</div>
+                    <p>distribuido en 14 meses</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">👥 Usuarios Activados</div>
+                    <div class="stat">14,655</div>
+                    <p>con primera transacción</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">💸 IMT Users</div>
+                    <div class="stat">3,950</div>
+                    <p>reciben remesas de USA</p>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.8em; margin: 40px 0 20px;">Basado en Data Real USA Q3 2025:</h3>
+            <ul>
+                <li><strong>Google UAC:</strong> +37% cuentas, CPA $39.66 - Confirmado como canal #1</li>
+                <li><strong>Meta Ads:</strong> IMT Activity 8.1% (highest) - Perfecto para remesas Colombia</li>
+                <li><strong>Penetración Colombia:</strong> Google 92%, Facebook 89% del mercado</li>
+                <li><strong>Android dominance:</strong> 71.5% usuarios (priorizar vs iOS)</li>
+            </ul>
+        </div>
+
+        <!-- FRIENDS & FAMILY -->
+        <div id="ff" class="section">
+            <h2 class="section-title">👥 Friends & Family Beta</h2>
+            
+            <div class="emphasis-box">
+                <h3 style="color: #27FB6B; margin-bottom: 15px;">Noviembre - Diciembre 2025 | NO PAID ADS</h3>
+                <p style="font-size: 1.1em;">Estrategia de validación de producto con usuarios pre-qualified antes de invertir los $700K en paid media.</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">📅 Timeline</div>
+                    <div class="stat">2 meses</div>
+                    <p>Noviembre - Diciembre 2025</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">💰 Budget</div>
+                    <div class="stat">$15K</div>
+                    <p>Setup + Incentivos + Creative</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">🎯 Meta Cuentas</div>
+                    <div class="stat">1,200</div>
+                    <p>CPA efectivo: $12.50</p>
+                </div>
+            </div>
+
+            <div class="promo-card">
+                <div class="promo-title">🎁 Promo F&F Exclusiva</div>
+                <div class="promo-amount">$80,000 COP</div>
+                <p style="font-size: 1.1em;">Para receptores en Colombia (vs $60k público)</p>
+                <p style="margin-top: 15px; font-weight: 600;">+ $10 USD para enviador USA por referido exitoso</p>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.6em; margin: 30px 0 15px;">Audiencias F&F:</h3>
+            <ul>
+                <li><strong>Enviadores MyBambu USA:</strong> 15,000-25,000 usuarios activos que envían a Colombia</li>
+                <li><strong>Receptores frecuentes:</strong> Base de datos de beneficiarios en Colombia (si disponible)</li>
+                <li><strong>Canales:</strong> Email + Push + SMS + WhatsApp Business API</li>
+                <li><strong>Segmentación:</strong> High frequency (>2x/mes), Medium (1x/mes), Dormant (reactivation)</li>
+            </ul>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Valor Agregado F&F:</strong> Product-market fit validado | UX bugs corregidos | 12 testimoniales reales para ads | App Store rating 4.5+ | Algoritmos warm-up con data inicial
+            </div>
+        </div>
+
+        <!-- Q1 2026 -->
+        <div id="q1" class="section">
+            <h2 class="section-title">🚀 Q1 2026: Launch & Scale</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">🔥 ENERO 2026 - PUBLIC LAUNCH</div>
+                    <div class="timeline-budget">Budget: $80,000</div>
+                    <div class="timeline-meta">Meta: 3,700 cuentas | CPA: $21.62</div>
+                    <div class="timeline-details">
+                        <p><strong>Semana 1 (Ene 2-5):</strong> Soft launch $15K - Solo Bogotá + Medellín</p>
+                        <p><strong>Semana 2 (Ene 6-12):</strong> Scale $20K - Añadir Cali, Barranquilla</p>
+                        <p><strong>Semana 3-4 (Ene 13-31):</strong> Full throttle $45K - Nacional</p>
+                        <p style="margin-top: 15px; color: #27FB6B;"><strong>Promo Especial Mid-Enero:</strong> "Quincena Loca" - $120K COP total (spike viral)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">FEBRERO 2026</div>
+                    <div class="timeline-budget">Budget: $55,000</div>
+                    <div class="timeline-meta">Meta: 2,500 cuentas | CPA: $22</div>
+                    <div class="timeline-details">
+                        <p>💕 <strong>San Valentín:</strong> "Envía amor a Colombia YA"</p>
+                        <p>Mantener momentum post-launch</p>
+                        <p>Creative refresh batch 1</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">MARZO 2026</div>
+                    <div class="timeline-budget">Budget: $55,000</div>
+                    <div class="timeline-meta">Meta: 2,600 cuentas | CPA: $21.15</div>
+                    <div class="timeline-details">
+                        <p>👩‍💼 <strong>Mujer Emprendedora:</strong> Focus persona "Ana"</p>
+                        <p>Optimization phase - pausar worst performers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-card" style="margin-top: 40px;">
+                <div class="promo-title">🎁 Promo Q1 Standard</div>
+                <div class="promo-amount">$60,000 COP</div>
+                <p style="font-size: 1.1em;">Al abrir cuenta + $60K por referido exitoso</p>
+            </div>
+
+            <div class="grid" style="margin-top: 30px;">
+                <div class="card">
+                    <div class="card-title">Q1 Total Budget</div>
+                    <div class="stat">$190K</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q1 Total Cuentas</div>
+                    <div class="stat">8,800</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">CPA Promedio Q1</div>
+                    <div class="stat">$21.59</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 2026 -->
+        <div id="q2" class="section">
+            <h2 class="section-title">📈 Q2 2026: Acceleration</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">ABRIL 2026</div>
+                    <div class="timeline-budget">Budget: $55,000</div>
+                    <div class="timeline-meta">Meta: 2,700 cuentas | CPA: $20.37</div>
+                    <div class="timeline-details">
+                        <p>🎯 <strong>Inicio tROAS campaigns</strong> (Google - optimizar por revenue)</p>
+                        <p>Retargeting agresivo usuarios 30+ días inactivos</p>
+                        <p>Test Waze Ads + Spotify Ads ($2K cada uno)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">🔥 MAYO 2026 - PEAK MES</div>
+                    <div class="timeline-budget">Budget: $55,000</div>
+                    <div class="timeline-meta">Meta: 2,800 cuentas | CPA: $19.64</div>
+                    <div class="promo-card" style="margin-top: 15px;">
+                        <div class="promo-title">💐 Día de la Madre ESPECIAL</div>
+                        <div class="promo-amount">$80,000 COP</div>
+                        <p>$60K base + $20K EXTRA Mayo</p>
+                        <p style="margin-top: 10px;">Peak season remesas - temporada alta envíos a mamás</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">JUNIO 2026</div>
+                    <div class="timeline-budget">Budget: $55,000</div>
+                    <div class="timeline-meta">Meta: 2,900 cuentas | CPA: $18.97</div>
+                    <div class="timeline-details">
+                        <p>📊 <strong>Milestone:</strong> 50,000+ usuarios totales</p>
+                        <p>Expansion programática (Moloco) - Scale retargeting</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid" style="margin-top: 40px;">
+                <div class="card">
+                    <div class="card-title">Q2 Total Budget</div>
+                    <div class="stat">$165K</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q2 Total Cuentas</div>
+                    <div class="stat">8,400</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">CPA Promedio Q2</div>
+                    <div class="stat">$19.64</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3 2026 -->
+        <div id="q3" class="section">
+            <h2 class="section-title">💡 Q3 2026: Efficiency & Profitability</h2>
+            
+            <div class="emphasis-box">
+                <h3 style="color: #27FB6B; margin-bottom: 15px;">Estrategia: Mantener volumen con MENOS budget</h3>
+                <p style="font-size: 1.1em;">Algoritmos maduros + Organic growth + Focus en LTV = Mejor efficiency</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">💡 Filosofía Q3</div>
+                    <div class="stat">Efficiency</div>
+                    <p>Menos $ = Más resultados</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">💰 Budget/Mes</div>
+                    <div class="stat">$50K</div>
+                    <p>vs $55K en Q2</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">🎯 Meta/Mes</div>
+                    <div class="stat">~2,750</div>
+                    <p>CPA: $18-20</p>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.6em; margin: 40px 0 20px;">Julio - Septiembre 2026:</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">JULIO 2026</div>
+                    <div class="timeline-budget">Budget: $50,000</div>
+                    <div class="timeline-meta">Meta: 2,700 cuentas | CPA: $18.52</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">AGOSTO 2026</div>
+                    <div class="timeline-budget">Budget: $50,000</div>
+                    <div class="timeline-meta">Meta: 2,750 cuentas | CPA: $18.18</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">SEPTIEMBRE 2026</div>
+                    <div class="timeline-budget">Budget: $50,000</div>
+                    <div class="timeline-meta">Meta: 2,800 cuentas | CPA: $17.86</div>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.6em; margin: 40px 0 20px;">Optimizaciones Q3:</h3>
+            <ul>
+                <li><strong>Fraud detection estricto:</strong> Mejorar activation rate filtrando usuarios low-quality</li>
+                <li><strong>Focus D7, D30, D90 retention:</strong> No solo adquisición, también mantener usuarios</li>
+                <li><strong>Product improvements:</strong> Usar feedback usuarios para optimizar UX</li>
+                <li><strong>Referral program optimization:</strong> Maximizar programa $60K referidos</li>
+            </ul>
+
+            <div class="grid" style="margin-top: 40px;">
+                <div class="card">
+                    <div class="card-title">Q3 Total Budget</div>
+                    <div class="stat">$150K</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q3 Total Cuentas</div>
+                    <div class="stat">8,250</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">CPA Promedio Q3</div>
+                    <div class="stat">$18.18</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q4 2026 -->
+        <div id="q4" class="section">
+            <h2 class="section-title">🎄 Q4 2026: Peak Season Push</h2>
+            
+            <div class="highlight-box">
+                <strong>🔥 Temporada Alta Remesas:</strong> Octubre-Diciembre = Peak remesas USA→Colombia (Thanksgiving, Black Friday, Navidad). Aprovechar demanda orgánica alta + CPAs más bajos.
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">OCTUBRE 2026</div>
+                    <div class="timeline-budget">Budget: $30,000</div>
+                    <div class="timeline-meta">Meta: 1,700 cuentas | CPA: $17.65</div>
+                    <div class="timeline-details">
+                        <p>🇨🇴 <strong>Independencia Colombia:</strong> Tema patriótico</p>
+                        <p>Budget conservador (preparar para Nov-Dic)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">🛍️ NOVIEMBRE 2026 - BLACK FRIDAY</div>
+                    <div class="timeline-budget">Budget: $35,000</div>
+                    <div class="timeline-meta">Meta: 2,000 cuentas | CPA: $17.50</div>
+                    <div class="promo-card" style="margin-top: 15px;">
+                        <div class="promo-title">🔥 BLACK FRIDAY MEGA</div>
+                        <div class="promo-amount">$100,000 COP</div>
+                        <p>Solo Nov 28-30 (vs $60K normal)</p>
+                        <p style="margin-top: 10px; font-weight: 600;">+ Referral x2: $120K COP cada uno</p>
+                        <p style="margin-top: 10px;">Crear urgencia: "Solo 3 días" - Limited time offer</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-month">🎁 DICIEMBRE 2026 - NAVIDAD PEAK</div>
+                    <div class="timeline-budget">Budget: $40,000</div>
+                    <div class="timeline-meta">Meta: 2,400 cuentas | CPA: $16.67 (BEST OF YEAR)</div>
+                    <div class="promo-card" style="margin-top: 15px;">
+                        <div class="promo-title">🎄 NAVIDAD ESPECIAL</div>
+                        <div class="promo-amount">$100,000 COP</div>
+                        <p>$60K base + $40K EXTRA Diciembre</p>
+                        <p style="margin-top: 10px; font-weight: 600;">+ Referral x2 todo el mes</p>
+                        <p style="margin-top: 10px;">"Esta Navidad, envía y recibe YA" - Peak remesas del año</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid" style="margin-top: 40px;">
+                <div class="card">
+                    <div class="card-title">Q4 Total Budget</div>
+                    <div class="stat">$105K</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q4 Total Cuentas</div>
+                    <div class="stat">6,000</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">CPA Promedio Q4</div>
+                    <div class="stat">$17.50</div>
+                </div>
+            </div>
+
+            <div class="emphasis-box" style="margin-top: 30px;">
+                <strong>Por qué Q4 tiene mejor CPA:</strong> Demand spike orgánico (familias enviando para fiestas) + Urgencia real (gastos navideños) + Competencia menor (otros brands pausan) = CPAs más bajos y mejor conversión
+            </div>
+        </div>
+
+        <!-- CANALES -->
+        <div id="canales" class="section">
+            <h2 class="section-title">📱 Distribución por Canal (14 meses)</h2>
+            
+            <div class="emphasis-box">
+                <strong>Basado en Data USA Q3 2025:</strong> Google dominó con +37% cuentas y CPA $39.66. Meta tuvo 8.1% IMT activity (best for remesas). Estrategia ajustada para Colombia con 92% penetración Google y mercado remesas $11.8B.
+            </div>
+
+            <div class="channel-grid">
+                <div class="channel-card">
+                    <div class="channel-name">🔍 Google UAC</div>
+                    <div class="channel-percent">45%</div>
+                    <div class="channel-amount">$315,000</div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">14,625 cuentas | CPA $21.54</p>
+                    <p style="margin-top: 10px; color: #27FB6B; font-weight: 600;">✓ Best Performer USA</p>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-name">📘 Meta Ads</div>
+                    <div class="channel-percent">30%</div>
+                    <div class="channel-amount">$203,000</div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">9,750 cuentas | CPA $20.82</p>
+                    <p style="margin-top: 10px; color: #27FB6B; font-weight: 600;">✓ Best IMT Activity</p>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-name">🍎 Apple Search</div>
+                    <div class="channel-percent">10%</div>
+                    <div class="channel-amount">$68,600</div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">2,275 cuentas | CPA $30.15</p>
+                    <p style="margin-top: 10px; color: #aaa;">Premium users iOS</p>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-name">🎵 TikTok</div>
+                    <div class="channel-percent">10%</div>
+                    <div class="channel-amount">$66,500</div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">1,950 cuentas | CPA $34.10</p>
+                    <p style="margin-top: 10px; color: #27FB6B; font-weight: 600;">✓ Brand Lift +45%</p>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-name">🔎 Search Brand</div>
+                    <div class="channel-percent">3%</div>
+                    <div class="channel-amount">$19,600</div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">975 cuentas | CPA $20.10</p>
+                    <p style="margin-top: 10px; color: #aaa;">Brand defense</p>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-name">🎯 Programática</div>
+                    <div class="channel-percent">2%</div>
+                    <div class="channel-amount">$13,300</div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">650 cuentas | CPA $20.46</p>
+                    <p style="margin-top: 10px; color: #aaa;">Retargeting avanzado</p>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.8em; margin: 50px 0 25px;">Breakdown Google UAC (45% = $315K):</h3>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">Android Install</div>
+                    <div class="stat">30%</div>
+                    <p>$94.5K - Volumen principal (71.5% usuarios)</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Android In-App</div>
+                    <div class="stat">12%</div>
+                    <p>$37.8K - Optimizar por account_opened</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">iOS Install</div>
+                    <div class="stat">3%</div>
+                    <p>$9.45K - Premium users (28.5%)</p>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.8em; margin: 50px 0 25px;">Breakdown Meta Ads (30% = $203K):</h3>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">App Install Android</div>
+                    <div class="stat">18%</div>
+                    <p>$126K - Volumen + IMT focus</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">App Install iOS</div>
+                    <div class="stat">7%</div>
+                    <p>$49K - iOS complement</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Retargeting</div>
+                    <div class="stat">5%</div>
+                    <p>$28K - Re-engage abandonos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTADOS -->
+        <div id="resultados" class="section">
+            <h2 class="section-title">🎯 Proyección de Resultados Finales</h2>
+            
+            <div class="highlight-box">
+                <strong>Consolidado 14 Meses (Nov 2025 - Dic 2026):</strong> 33,700 cuentas totales con CPA promedio $20.77 y 43.5% activation rate. Market share alcanzado: 1.82% del SAM Colombia (excelente para año 1).
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-box">
+                    <div class="kpi-label">Budget Total Invertido</div>
+                    <div class="kpi-value">$700K</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-label">Total Cuentas Abiertas</div>
+                    <div class="kpi-value">33,700</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-label">CPA Promedio Global</div>
+                    <div class="kpi-value">$20.77</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-label">Usuarios Activados</div>
+                    <div class="kpi-value">14,655</div>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.8em; margin: 50px 0 25px;">Evolución CPA por Trimestre:</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">Q1 2026</div>
+                    <div class="stat" style="font-size: 2.5em;">$21.59</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%">Learning</div>
+                    </div>
+                    <p style="margin-top: 15px;">8,800 cuentas | Fase aprendizaje</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q2 2026</div>
+                    <div class="stat" style="font-size: 2.5em;">$19.64</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%">Optimizing</div>
+                    </div>
+                    <p style="margin-top: 15px;">8,400 cuentas | Optimization</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q3 2026</div>
+                    <div class="stat" style="font-size: 2.5em;">$18.18</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%">Efficient</div>
+                    </div>
+                    <p style="margin-top: 15px;">8,250 cuentas | Efficiency</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q4 2026</div>
+                    <div class="stat" style="font-size: 2.5em; color: #FFD700;">$17.50</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 55%; background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);">Peak! 🎉</div>
+                    </div>
+                    <p style="margin-top: 15px;">6,000 cuentas | Best performance</p>
+                </div>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.8em; margin: 50px 0 25px;">Desglose por Fase:</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">F&F Beta</div>
+                    <div class="stat">1,200</div>
+                    <p>$15K budget | CPA $12.50</p>
+                    <p style="color: #27FB6B; margin-top: 10px;">Activation: 60%</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q1 Launch</div>
+                    <div class="stat">8,800</div>
+                    <p>$190K budget | CPA $21.59</p>
+                    <p style="color: #27FB6B; margin-top: 10px;">Activation: 40%</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q2 Scale</div>
+                    <div class="stat">8,400</div>
+                    <p>$165K budget | CPA $19.64</p>
+                    <p style="color: #27FB6B; margin-top: 10px;">Activation: 42%</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q3 Efficiency</div>
+                    <div class="stat">8,250</div>
+                    <p>$150K budget | CPA $18.18</p>
+                    <p style="color: #27FB6B; margin-top: 10px;">Activation: 45%</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Q4 Peak</div>
+                    <div class="stat">6,000</div>
+                    <p>$115K budget | CPA $17.50</p>
+                    <p style="color: #27FB6B; margin-top: 10px;">Activation: 48%</p>
+                </div>
+            </div>
+
+            <div class="emphasis-box" style="margin-top: 50px;">
+                <h3 style="color: #00052E; margin-bottom: 15px; font-size: 1.5em;">🎉 Monthly Run Rate Final (Dic 2026):</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    <strong>2,400 cuentas/mes</strong> con $40K budget mensual y CPA $16.67 (best of year).<br>
+                    <strong>Proyección 2027:</strong> Alcanzar 10,000 cuentas/mes requiere budget $150-180K/mes manteniendo CPA ~$18-20.<br>
+                    <strong>Market Share:</strong> 1.82% del SAM - excelente para año 1, comparable con lanzamientos NuBank/Ualá en otros mercados.
+                </p>
+            </div>
+
+            <h3 style="color: #27FB6B; font-size: 1.8em; margin: 50px 0 25px;">Métricas Clave Adicionales:</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">Install → Account</div>
+                    <div class="stat">42%</div>
+                    <p>vs 35% USA (mejor UX Colombia)</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">IMT Users</div>
+                    <div class="stat">3,950</div>
+                    <p>27% de activados reciben remesas</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">D90 Retention</div>
+                    <div class="stat">45%</div>
+                    <p>Meta: Mantener usuarios activos</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Organic Uplift</div>
+                    <div class="stat">30%</div>
+                    <p>Word of mouth + referral program</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
